@@ -67,17 +67,20 @@ See `notebooks/01_questions_and_setup.ipynb` for the full questions with justifi
 
 4. Run all cells in order (Kernel → Restart & Run All).
 
-> The notebook loads `data/superstore_clean.csv`. If that file is not present, run `notebooks/02_cleaning.ipynb` first to generate it from `data/superstore.csv`.
+> The notebook loads `data/superstore_clean.csv`. If that file is not present, launch the main notebook and it will fall back to loading raw data and applying minimal cleaning inline.
 
 ---
 
 ## Summary of Findings
 
-> TODO: Copy the 5–8 findings from [`findings.md`](./findings.md) here as a bulleted list once analysis is complete. Lead with the most important finding. Each bullet must have a specific number.
+> Lead with the most important finding. Each bullet must have a specific number. See [`findings.md`](./findings.md) for the full write-up.
 
-- **[TODO Finding 1]** — [one sentence with the supporting number]
-- **[TODO Finding 2]** — [one sentence with the supporting number]
-- **[TODO Finding 3]** — [one sentence with the supporting number]
+- **Technology is the profit engine** — $836K in sales (36.4% of total) and $145K in profit (50.8% of total profit), with a 17.4% margin. Source: Q1.
+- **Furniture is a revenue trap** — $742K in sales (32.3% of total) but only $18K profit (6.4% of total), a margin of just 2.5%. Source: Q1.
+- **Sales grew 51.4% from 2014 to 2017** — from $484K to $733K, with consistent Q4 peaks (Q4 2017 hit $280K). Source: Q2.
+- **High discounts destroy profit** — orders with >20% discount averaged -$97 profit vs $67 for no-discount orders (r = -0.220). Source: Q3.
+- **West leads in both sales and profit** — $725K sales and $108K profit. Source: Q1.
+- **11.7% of orders are outliers** — 1,167 orders totaling $1.48M in sales. Source: Additional Analysis.
 
 See [`findings.md`](./findings.md) for the full write-up.
 
@@ -85,15 +88,14 @@ See [`findings.md`](./findings.md) for the full write-up.
 
 ## Visual Highlights
 
-> TODO: Export at least one chart as PNG to `images/` and embed here. Example:
-
-<!-- Uncomment after exporting:
 ![Revenue by Category](images/question1_revenue_by_category.png)
-*Figure 1: Total revenue by product category. [One sentence interpretation.]*
--->
+*Figure 1: Total sales and profit by product category. Technology leads profit at 50.8% while Furniture has high sales but only 2.5% margin.*
 
 ![Sales Over Time](images/question2_sales_over_time.png)
-*Figure 2: TODO — Monthly sales trend. [One sentence interpretation.]*
+*Figure 2: Monthly sales and profit trend (2014-2017). Sales grew 51.4% with consistent Q4 peaks.*
+
+![Discount vs Profit](images/question3_discount_vs_profit.png)
+*Figure 3: Discount vs profit scatter plot and average profit by discount level. High discounts systematically destroy profit.*
 
 ---
 
@@ -113,8 +115,8 @@ superstore-sales-analysis/
 │   └── superstore_clean.csv       ← cleaned data (output of 02_cleaning.ipynb)
 ├── notebooks/
 │   ├── 01_questions_and_setup.ipynb  ← Day 15: questions + raw inspection (DONE)
-│   ├── 02_cleaning.ipynb             ← Day 16: cleaning (TODO)
-│   └── 03_eda_exploration.ipynb      ← Day 16: EDA (TODO)
+│   ├── 02_cleaning.ipynb             ← Day 16: cleaning (DONE)
+│   └── 03_eda_exploration.ipynb      ← Day 16: EDA (DONE)
 └── images/
     └── *.png                      ← exported charts used in README
 ```
@@ -123,10 +125,7 @@ superstore-sales-analysis/
 
 ## Limitations
 
-> TODO: One honest paragraph describing what this analysis cannot tell you. Examples:
-> - The dataset covers only 4 years (2014-2017), which limits trend reliability.
-> - Cost data is not provided, so margin analysis is not possible.
-> - Geography is at the state level, not store level.
+This analysis is limited by the dataset's 4-year span (2014-2017), making long-term trend conclusions unreliable. Cost data (shipping, manufacturing, overhead) is not included, so we can only measure gross profit, not net margin. Geography is at the state level, not store level, preventing granular location-based strategy. The discount-profit correlation (r=-0.22) is moderate, meaning discount is one factor among many affecting profit.
 
 ---
 
